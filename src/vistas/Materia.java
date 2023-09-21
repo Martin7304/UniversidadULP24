@@ -56,9 +56,19 @@ public class Materia extends javax.swing.JInternalFrame {
 
         jestado1.setText("Estado");
 
-        jnuevo1.setText("Nuevo");
+        jnuevo1.setText("Reactivar");
+        jnuevo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jnuevo1ActionPerformed(evt);
+            }
+        });
 
         jeliminar1.setText("Eliminar");
+        jeliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jeliminar1ActionPerformed(evt);
+            }
+        });
 
         jguardar1.setText("Guardar");
         jguardar1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +97,7 @@ public class Materia extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,27 +112,28 @@ public class Materia extends javax.swing.JInternalFrame {
                                         .addGap(60, 60, 60)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TextAno, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(42, 42, 42)
-                                            .addComponent(jbuscar1))
-                                        .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbuscar1)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jnuevo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jeliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jestado1)
                                         .addGap(49, 49, 49)
-                                        .addComponent(RadioActivo))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jnuevo1)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jeliminar1)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jguardar1)))
-                                .addGap(33, 33, 33)
+                                        .addComponent(RadioActivo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jguardar1)
+                                        .addGap(48, 48, 48)))
                                 .addComponent(jsalir1)))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,8 +144,11 @@ public class Materia extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcodigo)
                     .addComponent(jbuscar1)
-                    .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                    .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jeliminar1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jnuevo1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jnombre1)
                     .addComponent(TextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -146,10 +160,8 @@ public class Materia extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RadioActivo)
                     .addComponent(jestado1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jnuevo1)
-                    .addComponent(jeliminar1)
                     .addComponent(jguardar1)
                     .addComponent(jsalir1))
                 .addGap(45, 45, 45))
@@ -181,6 +193,22 @@ public class Materia extends javax.swing.JInternalFrame {
         Mat.buscarMateria(Codigo);
         
     }//GEN-LAST:event_jbuscar1ActionPerformed
+
+    private void jeliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jeliminar1ActionPerformed
+        // TODO add your handling code here:
+        int Codigo = Integer.parseInt(TextCodigo.getText());
+        
+        MateriaData Mat = new MateriaData();
+        Mat.eliminarMateria(Codigo);
+    }//GEN-LAST:event_jeliminar1ActionPerformed
+
+    private void jnuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnuevo1ActionPerformed
+        // TODO add your handling code here:
+        int Codigo = Integer.parseInt(TextCodigo.getText());
+        
+        MateriaData Mat = new MateriaData();
+        Mat.ReactivarMateria(Codigo);
+    }//GEN-LAST:event_jnuevo1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

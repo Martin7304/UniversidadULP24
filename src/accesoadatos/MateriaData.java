@@ -115,6 +115,28 @@ public class MateriaData {
         }
     }
     
+    
+    public void ReactivarMateria(int id) {
+        try {
+            String modificacion = "UPDATE materia SET estado = 1 WHERE idMateria = ?";
+            
+            PreparedStatement ps = conex.prepareStatement(modificacion);
+            ps.setInt(1, id);
+            
+            int resultado = ps.executeUpdate();
+            
+            if (resultado == 1) {
+                JOptionPane.showMessageDialog(null, "La materia se activo correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al activar la materia.");
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia. " + ex.getMessage());
+        }
+    }
+    
     public List<Materias> listarMaterias() {
         List<Materias> materias = new ArrayList();
         try {
