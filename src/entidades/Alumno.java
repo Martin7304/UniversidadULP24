@@ -90,7 +90,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumno:" + "\nidAlumno = " + idAlumno + ",\n dni = " + dni + ",\n apellido = " + apellido + ",\n nombre = " + nombre + ",\n fechaNacimiento = " + fechaNacimiento + ",\n estado = " + estado ;
+        return "Alumno: " + "\n\nIdAlumno = " + idAlumno + "\n\nDNI = " + dni + "\n\nApellido = " + apellido + "\n\nNombre = " + nombre + "\n\nFecha De Nacimiento = " + fechaNacimiento + "\n\nEstado = " + estado ;
     }
 
 }

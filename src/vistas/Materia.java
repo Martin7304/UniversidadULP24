@@ -70,6 +70,11 @@ public class Materia extends javax.swing.JInternalFrame {
         jsalir1.setText("Salir");
 
         jbuscar1.setText("Bucar");
+        jbuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuscar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,9 +143,9 @@ public class Materia extends javax.swing.JInternalFrame {
                     .addComponent(jano)
                     .addComponent(TextAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jestado1)
-                    .addComponent(RadioActivo))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RadioActivo)
+                    .addComponent(jestado1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jnuevo1)
@@ -167,6 +172,15 @@ public class Materia extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_jguardar1ActionPerformed
+
+    private void jbuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuscar1ActionPerformed
+        // TODO add your handling code here:
+        int Codigo = Integer.parseInt(TextCodigo.getText());
+        
+        MateriaData Mat = new MateriaData();
+        Mat.buscarMateria(Codigo);
+        
+    }//GEN-LAST:event_jbuscar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

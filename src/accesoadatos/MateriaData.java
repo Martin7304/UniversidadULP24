@@ -58,6 +58,7 @@ public class MateriaData {
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("año"));
                 materia.setEstado(true);
+                 JOptionPane.showMessageDialog(null, materia.toString());
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la materia.");
             }
