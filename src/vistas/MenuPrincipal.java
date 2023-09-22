@@ -154,7 +154,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        
+        //Boton para abrir la carga de notas
         escritorio.removeAll();
         escritorio.repaint();
         Cargadenotas notas = new Cargadenotas();
@@ -164,7 +164,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    
+        //Boton para abrir el formulario de alumno
         escritorio.removeAll();
         escritorio.repaint();
         FormularioDeAlumno formdealum = new FormularioDeAlumno();
@@ -173,7 +173,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        
+        //Boton para abrir la seccion materias
         escritorio.removeAll();
         escritorio.repaint();
         Materia mat = new Materia();
@@ -183,7 +183,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
+        //Boton para abrir manejo de inscripciones
         escritorio.removeAll();
         escritorio.repaint();
         manejodeinscrip insc = new manejodeinscrip();
@@ -193,7 +193,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-
+        //Boton para abrir la seccion alumnos por materia
         escritorio.removeAll();
         escritorio.repaint();
         Alumnospormateria am = new Alumnospormateria();
