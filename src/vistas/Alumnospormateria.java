@@ -5,6 +5,11 @@
  */
 package vistas;
 
+import accesoadatos.InscripcionData;
+import accesoadatos.MateriaData;
+import entidades.Alumno;
+import entidades.Materias;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +26,8 @@ public class Alumnospormateria extends javax.swing.JInternalFrame {
     public Alumnospormateria() {
         initComponents();
         armarcabezera3();
+        cargarCombo();
+ 
     }
 
     /**
@@ -34,17 +41,22 @@ public class Alumnospormateria extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableam = new javax.swing.JTable();
-        jsalir4 = new javax.swing.JButton();
+
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setText("Listado de Alumnos por Materia");
 
         jLabel2.setText("Seleccionar materia");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox2MouseClicked(evt);
+            }
+        });
 
         jTableam.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,27 +71,21 @@ public class Alumnospormateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableam);
 
-        jsalir4.setText("Salir");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jsalir4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(77, 77, 77)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addGap(77, 77, 77)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(70, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -93,25 +99,29 @@ public class Alumnospormateria extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jsalir4)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
+        // TODO add your handling code here:
+        limpiarTabla();
+        
+        cargarTabla();
+    }//GEN-LAST:event_jComboBox2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Materias> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableam;
-    private javax.swing.JButton jsalir4;
     // End of variables declaration//GEN-END:variables
 
 private void armarcabezera3(){
@@ -124,6 +134,36 @@ private void armarcabezera3(){
 }
     
     
+private void cargarCombo () {
+    MateriaData mat = new MateriaData();
+    List<Materias> listar = mat.listarMaterias();
+     
+     for (Materias completo: listar) {
+         
+        // solucionar la vista en el combo box
+       jComboBox2.addItem(completo);
+     }
+}
 
+private void cargarTabla() {
+   
+   Materias matSelec = (Materias) jComboBox2.getSelectedItem();
+   int idMateria = matSelec.getIdMateria() ;
+   InscripcionData ins = new InscripcionData();
+   List<Alumno> lista = ins.obtenerAlumnosPorMateria(idMateria);
+   
+    for (Alumno obj : lista) {
+          modelo.addRow(new Object [] {obj.getIdAlumno(), obj.getDni(), obj.getApellido(), obj.getNombre() }); 
+       }
+    
+}
+
+private void limpiarTabla() {
+       
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+        
+}
 
 }

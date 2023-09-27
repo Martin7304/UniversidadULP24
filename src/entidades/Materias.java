@@ -24,6 +24,9 @@ public class Materias {
         this.estado = estado;
     }
 
+
+
+
     // Metodos Getter and Setter.
     public int getIdMateria() {
         return idMateria;
@@ -57,9 +60,10 @@ public class Materias {
         this.estado = estado;
     }
 
+ 
     @Override
     public String toString() {
-        return "Materia: " + "\n\nIdMateria = " + idMateria + "\n\nNombre = " + nombre + "\n\nAño = " + anio + "\n\nEstado = " + estado;
-    }
+        return idMateria + " -" + nombre + " ";
     
+    }
 }

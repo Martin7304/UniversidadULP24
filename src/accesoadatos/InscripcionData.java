@@ -91,40 +91,41 @@ public class InscripcionData {
     
     // Este método recibe el id de un alumno.
     public List<Materias> obtenerMateriasCursadas(int id) {
-        List<Materias> materias = new ArrayList();
+  ArrayList<Materias> materias= new ArrayList<>();
+         
+         String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE inscripcion.idMateria = materia.idMateria AND "
+                 + "inscripcion.idAlumno = ?";
+         
         try {
-            String listar = "SELECT materia.idMateria, nombre, año "
-                          + "FROM inscripcion JOIN materia "
-                          + "ON (inscripcion.idMateria = materia.idMateria) "
-                          + "WHERE inscripcion.idAlumno = ?";
-            
-            PreparedStatement ps = conex.prepareStatement(listar);
+            PreparedStatement ps=conex.prepareStatement(sql);
             ps.setInt(1, id);
-            
-            ResultSet rs = ps.executeQuery();
-            
-            while (rs.next()) {
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                
                 Materias materia = new Materias();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("año"));
                 materias.add(materia);
+                
             }
-            
             ps.close();
+            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a las tablas inscripcion y/o materia. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion");
         }
         return materias;
+        
     }
     
-    public List<Materias> obtenerMateriasNoCursadas(int id) {
+   public List<Materias> obtenerMateriasNoCursadas(int id) {
         List<Materias> materias = new ArrayList<>();
         try {
             String listar = "SELECT materia.idMateria, nombre, año "
                           + "FROM inscripcion JOIN materia "
-                          + "ON (inscripcion.idMateria = materia.idMateria) "
-                          + "WHERE inscripcion.idAlumno = ?"; // Arreglar para que traiga las materia donde no esta inscripto
+                          + "ON NOT (inscripcion.idMateria = materia.idMateria) "
+                          + "WHERE inscripcion.idAlumno = ?";
+        ///// Arreglar para que traiga las materia donde no esta inscripto
             
             PreparedStatement ps = conex.prepareStatement(listar);
             ps.setInt(1, id);

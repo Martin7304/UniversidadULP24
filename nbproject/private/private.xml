@@ -5,11 +5,17 @@
         <group>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/entidades/Materias.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/accesoadatos/Conexion.java</file>
-            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/MenuPrincipal.java</file>
+            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/accesoadatos/InscripcionData.java</file>
+            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/Cargadenotas.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/accesoadatos/AlumnoData.java</file>
+            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/entidades/Inscripcion.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/universidadulp24/UniversidadULP24.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/entidades/Alumno.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/accesoadatos/MateriaData.java</file>
+            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/MenuPrincipal.java</file>
+            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/FormularioDeAlumno.java</file>
+            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/manejodeinscrip.java</file>
+            <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/Alumnospormateria.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/Materia.java</file>
         </group>
     </open-files>

@@ -5,22 +5,49 @@
  */
 package vistas;
 
+import accesoadatos.AlumnoData;
+import accesoadatos.InscripcionData;
+import entidades.Alumno;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author santi
  */
+
+
+
+
+
 public class Cargadenotas extends javax.swing.JInternalFrame {
+    
 
     DefaultTableModel modelo = new DefaultTableModel();
     
+         //Método sobreescrito que sirve para indicar cuál celda es editable
+    //@Override
+        public boolean isCellEditable(int row, int column) {
+            //Devuelve TRUE si la columna seleccionada es la 2, si es así, permitirá su edición, caso contrario no podrá ser editada esa columna.
+            return column == 2;
+        }
+        
+   
     
+    //Declaración de variable alum para usar los métodos de AlumData
+    AlumnoData alum = new AlumnoData();
+    //Lista que servirá para guardar los alumnos del jComboBox1 para utilizarlos más adelante
+    List <Alumno> alumnos = new ArrayList();
+
     
     
     public Cargadenotas() {
         initComponents();
         armarcabezera2();
+        cargarCombo();
     }
 
     /**
@@ -37,15 +64,20 @@ public class Cargadenotas extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablenotas = new javax.swing.JTable();
-        jsalir3 = new javax.swing.JButton();
         jguardar3 = new javax.swing.JButton();
+
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setText("Carga de notas");
 
         jLabel2.setText("Seleccione alumno");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jTablenotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -60,9 +92,12 @@ public class Cargadenotas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTablenotas);
 
-        jsalir3.setText("Salir");
-
         jguardar3.setText("Guardar");
+        jguardar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jguardar3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,9 +117,7 @@ public class Cargadenotas extends javax.swing.JInternalFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jguardar3)
-                        .addGap(107, 107, 107)
-                        .addComponent(jsalir3)
-                        .addGap(22, 22, 22))))
+                        .addGap(188, 188, 188))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(144, 144, 144)
                 .addComponent(jLabel1)
@@ -101,25 +134,77 @@ public class Cargadenotas extends javax.swing.JInternalFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jsalir3)
-                    .addComponent(jguardar3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(jguardar3)
                 .addGap(94, 94, 94))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+       if (jComboBox1.getSelectedItem() != "<Seleccionar Alumno>") {
+            //Elimina el item <Seleccionar alumnos> cuando se selecciona otro item distinto a este
+            jComboBox1.removeItem("<Seleccionar Alumno>");
+
+            //Elimina todos los datos cargados en la lista de alumnos
+            alumnos.clear();
+
+            //Agrega alumnos existentes en una lista que nos servirá para acceder a el ID y utilizarlo en otros métodos
+            for (int i = 0; i < jComboBox1.getItemCount(); i++) {
+                alumnos.add(alum.listarAlumnos().get(i));
+            }
+
+            //Declaración de variables y valores
+            InscripcionData ins = new InscripcionData();
+            Object[] datos = new Object[3];
+
+            //Elimina todos los datos existentes de la tabla para cargar los nuevos
+            while (modelo.getRowCount() != 0) {
+                modelo.removeRow(0);
+            }
+
+            //Carga datos en un arreglo para luego actualizar la tabla con los valores aquí guardados
+            for (int i = 0; i < ins.obtenerInscripcionesPorAlumno(alumnos.get(jComboBox1.getSelectedIndex()).getIdAlumno()).size(); i++) {
+                datos[0] = ins.obtenerInscripcionesPorAlumno(alumnos.get(jComboBox1.getSelectedIndex()).getIdAlumno()).get(i).getMateria().getIdMateria();
+                datos[1] = ins.obtenerInscripcionesPorAlumno(alumnos.get(jComboBox1.getSelectedIndex()).getIdAlumno()).get(i).getMateria().getNombre();
+                datos[2] = ins.obtenerInscripcionesPorAlumno(alumnos.get(jComboBox1.getSelectedIndex()).getIdAlumno()).get(i).getNota();
+
+                //Actualiza la tabla
+                modelo.addRow(datos);
+
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jguardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jguardar3ActionPerformed
+        // TODO add your handling code here:
+         InscripcionData ins = new InscripcionData();
+        int nota;
+        
+        //Corroborary actualiza todas las notas del alumno para evitar errores
+        for(int i = 0; i < ins.obtenerInscripcionesPorAlumno(alumnos.get(jComboBox1.getSelectedIndex()).getIdAlumno()).size(); i++){
+            nota = Integer.parseInt(this.jTablenotas.getValueAt(i, 2).toString());
+            
+            //Verifica que la nota sea correcta
+            //Si es así la guarda, de lo contrario envía un mensaje de error y no guarda la nota.
+            if(nota <= 10 && nota >= 0){
+                ins.actualizarNota(alumnos.get(jComboBox1.getSelectedIndex()).getIdAlumno(), ins.obtenerInscripcionesPorAlumno(alumnos.get(jComboBox1.getSelectedIndex()).getIdAlumno()).get(i).getMateria().getIdMateria(), nota);
+            } else {
+                JOptionPane.showMessageDialog(null, "Nota fuera de rango");
+            }
+        }
+    }//GEN-LAST:event_jguardar3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Alumno> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablenotas;
     private javax.swing.JButton jguardar3;
-    private javax.swing.JButton jsalir3;
     // End of variables declaration//GEN-END:variables
 
 private void armarcabezera2(){
@@ -133,8 +218,18 @@ private void armarcabezera2(){
     
     
 }
-    
-    
 
-
+private void cargarCombo(){
+    //cargamos el combo box para que se vean las diferentes opciones de alumnos
+     AlumnoData alu = new AlumnoData();
+     List<Alumno> listar = alu.listarAlumnos();
+     
+     for (Alumno completo: listar) {
+         
+        // solucionar la vista en el combo box
+        jComboBox1.addItem(completo);
+        
+     }
+     
+}
 }

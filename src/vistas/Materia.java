@@ -37,12 +37,13 @@ public class Materia extends javax.swing.JInternalFrame {
         jnuevo1 = new javax.swing.JButton();
         jeliminar1 = new javax.swing.JButton();
         jguardar1 = new javax.swing.JButton();
-        jsalir1 = new javax.swing.JButton();
         jbuscar1 = new javax.swing.JButton();
         TextCodigo = new javax.swing.JTextField();
         TextNombre = new javax.swing.JTextField();
         TextAno = new javax.swing.JTextField();
         RadioActivo = new javax.swing.JRadioButton();
+
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -76,8 +77,6 @@ public class Materia extends javax.swing.JInternalFrame {
                 jguardar1ActionPerformed(evt);
             }
         });
-
-        jsalir1.setText("Salir");
 
         jbuscar1.setText("Bucar");
         jbuscar1.addActionListener(new java.awt.event.ActionListener() {
@@ -121,18 +120,16 @@ public class Materia extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jnuevo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jeliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jestado1)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(RadioActivo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jguardar1)
-                                        .addGap(48, 48, 48)))
-                                .addComponent(jsalir1)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jestado1)
+                                    .addGap(49, 49, 49)
+                                    .addComponent(RadioActivo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(jguardar1)
+                                    .addGap(107, 107, 107))))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,10 +157,8 @@ public class Materia extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RadioActivo)
                     .addComponent(jestado1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jguardar1)
-                    .addComponent(jsalir1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(jguardar1)
                 .addGap(45, 45, 45))
         );
 
@@ -225,6 +220,5 @@ public class Materia extends javax.swing.JInternalFrame {
     private javax.swing.JButton jguardar1;
     private javax.swing.JLabel jnombre1;
     private javax.swing.JButton jnuevo1;
-    private javax.swing.JButton jsalir1;
     // End of variables declaration//GEN-END:variables
 }

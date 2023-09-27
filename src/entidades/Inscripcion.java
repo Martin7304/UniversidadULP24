@@ -17,6 +17,11 @@ public class Inscripcion {
         this.nota = nota;
     }
 
+    public Inscripcion(Alumno alumno, Materias materia) {
+        this.alumno = alumno;
+        this.materia = materia;
+    }
+
     // Constructor sin el atributo idInscripcion.
     public Inscripcion(Alumno alumno, Materias materia, int nota) {
         this.alumno = alumno;
