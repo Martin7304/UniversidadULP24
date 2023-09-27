@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/entidades/Materias.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/accesoadatos/Conexion.java</file>
@@ -18,5 +19,8 @@
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/Alumnospormateria.java</file>
             <file>file:/C:/Users/marti/OneDrive/Documentos/NetBeansProjects/UniversidadULP24/src/vistas/Materia.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> fd251259875b7f6df05d3f2bc5ed82121db90160
     </open-files>
 </project-private>
